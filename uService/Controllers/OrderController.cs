@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using uService.Contracts;
 using uService.Database;
 using uService.Models;
 
@@ -17,7 +18,7 @@ namespace uService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PosliObjednavku(Objednavka objednavka)
+        public async Task<ActionResult> PosliObjednavku(ObjednavkaDto objednavka)
         {
             _context.Objednavky.Add(objednavka);
             await _context.SaveChangesAsync();

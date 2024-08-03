@@ -2487,11 +2487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService\\uService.csproj",
+      "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService.csproj",
       "projectName": "uService",
-      "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService\\uService.csproj",
+      "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService\\obj\\",
+      "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

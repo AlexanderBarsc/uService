@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QvtLAui0NUP2DoTvHKim5AqHSNgYCgpmaYUo0Ejc0f6sswuomSd7jkvUYMKBy9oSmErC2MZncK+72fAU3l694A==",
+  "dgSpecHash": "IbOvLrRMuTbWqLQ4mblzN2JAsNcPmNCCzIJaBEE1m5Fre0K2HjIin1h7KSXPP37Ylv85WY1x1WJLmddc5YBL9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService\\uService.csproj",
+  "projectFilePath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

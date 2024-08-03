@@ -2,11 +2,21 @@
 {
     public class Objednavka
     {
-        private int Id { get; set; }
+        public Objednavka(string name, IEnumerable<PolozkyObjednavky> polozkyObjednavky)
+        {
+            Name = name;
+            DatumVytvoreni = DateTime.Now;
+            StavObjednavky = StavObjednavky.Nova;
+            PolozkyObjednavky = polozkyObjednavky;
+
+
+        }
+
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        private DateTime DatumVytvoreni { get; set; }
+        public DateTime DatumVytvoreni { get; set; }
 
         public StavObjednavky StavObjednavky { get; set; }
 
