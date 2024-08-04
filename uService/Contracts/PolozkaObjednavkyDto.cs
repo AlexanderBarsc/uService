@@ -6,6 +6,6 @@
 
         public int PocetKusu { get; set; }
 
-        public decimal Cena { get; set; }
+        public decimal CenaZaKus { get; set; }
     }
 }

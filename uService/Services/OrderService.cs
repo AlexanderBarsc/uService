@@ -22,5 +22,11 @@ namespace uService.Services
             await _dbContext.SaveChangesAsync();
      
         }
+
+        public async Task VypisObjednavky(string jmenoObjednavky)
+        {
+            var list = _dbContext.Objednavky.Where(x => x.Name == jmenoObjednavky).ToList();
+            await Console.Out.WriteLineAsync();
+        }
     }
 }

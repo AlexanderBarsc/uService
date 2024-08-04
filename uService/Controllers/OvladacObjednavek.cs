@@ -20,10 +20,19 @@ namespace uService.Controllers
         [HttpPost]
         public async Task<ActionResult> PosliObjednavku(ObjednavkaDto objednavkaDto)
         {
-            var polozkyObjednavky = objednavkaDto.PolozkyObjednavky.Select(x => new PolozkaObjednavky(x.NazevZbozi, x.PocetKusu, x.Cena)).ToList();
+            var polozkyObjednavky = objednavkaDto.PolozkyObjednavky.Select(x => new PolozkaObjednavky(x.NazevZbozi, x.PocetKusu, x.CenaZaKus)).ToList();
             var objednavka = new Objednavka(objednavkaDto.Name, polozkyObjednavky);
 
             await _orderService.UlozObjednavku(objednavka);
+
+            return Ok();
+        }
+
+
+        [HttpGet("{jmenoObjednavky}")]
+        public async Task<ActionResult> VypisObjednavky(string jmenoObjednavky)
+        {
+            await _orderService.VypisObjednavky(jmenoObjednavky);
 
             return Ok();
         }
