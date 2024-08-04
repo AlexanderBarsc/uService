@@ -12,8 +12,9 @@ namespace uService
             var builder = WebApplication.CreateBuilder(args);
             var configuration = builder.Configuration;
 
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseLazyLoadingProxies().UseSqlite(configuration.GetConnectionString("DefaultConnection")));
-
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseLazyLoadingProxies().
+            UseSqlite(configuration.GetConnectionString("DefaultConnection")),
+            ServiceLifetime.Singleton);
 
             builder.Services.AddControllers();
 
@@ -25,6 +26,9 @@ namespace uService
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Vzorova uSluzba pro Alzu", Version = "v1" });
 
             });
+
+            builder.Services.AddSingleton<IBackgroundTaskQueue>(new BackgroundTaskQueue(50));
+            builder.Services.AddHostedService<QueuedHostedService>();
 
             var app = builder.Build();
 

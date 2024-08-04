@@ -10,10 +10,12 @@ namespace uService.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
+        private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService, IBackgroundTaskQueue backgroundTaskQueue)
         {
             _orderService = orderService;
+            _backgroundTaskQueue = backgroundTaskQueue;
         }
 
         [HttpPost]
@@ -30,7 +32,10 @@ namespace uService.Controllers
         [HttpPatch]
         public async Task<ActionResult> ZaplaceniObjednavky(PlatbaObjednavkyDto platbaObjednavkyDto)
         {
-            await _orderService.ZaplaceniObjednavky(platbaObjednavkyDto);
+            await _backgroundTaskQueue.Queue(async x =>
+            {
+                await _orderService.ZaplaceniObjednavky(platbaObjednavkyDto);
+            });
 
             return Ok();
         }

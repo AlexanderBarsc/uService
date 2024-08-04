@@ -9,8 +9,6 @@ namespace uService.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
             modelBuilder.Entity<Objednavka>()
                 .HasMany(p => p.PolozkyObjednavky)
                 .WithOne(p => p.Objednavka)
