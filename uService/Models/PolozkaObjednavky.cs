@@ -20,6 +20,10 @@ namespace uService.Models
 
         public decimal Cena { get; set; }
 
+        public int ObjednavkaId { get; set; }
+
+        public Objednavka Objednavka { get; set; }
+
         private void Validace()
         {
 

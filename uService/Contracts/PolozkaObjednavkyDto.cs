@@ -1,6 +1,6 @@
 ﻿namespace uService.Contracts
 {
-    public class PolozkyObjednavkyDto
+    public class PolozkaObjednavkyDto
     {
         public string NazevZbozi { get; set; }
 

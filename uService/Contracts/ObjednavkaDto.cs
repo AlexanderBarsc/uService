@@ -6,6 +6,6 @@ namespace uService.Contracts
     { 
         public string Name { get; set; }
 
-        public IEnumerable<PolozkaObjednavky> PolozkyObjednavky { get; set; }
+        public IEnumerable<PolozkaObjednavkyDto> PolozkyObjednavky { get; set; }
     }
 }
