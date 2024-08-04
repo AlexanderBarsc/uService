@@ -2,15 +2,15 @@
 
 namespace uService.Models
 {
-    public class PolozkyObjednavky
+    public class PolozkaObjednavky
     {
-        public PolozkyObjednavky(string nazevZbozi, int pocetKusu, int cena)
+
+        public PolozkaObjednavky(string nazevZbozi, int pocetKusu, decimal cena)
         {
             NazevZbozi = nazevZbozi;
             PocetKusu = pocetKusu;
             Cena = cena;
-
-
+            Validace();
         }
 
         [Key]
@@ -20,17 +20,17 @@ namespace uService.Models
 
         public decimal Cena { get; set; }
 
-        public void Validace()
+        private void Validace()
         {
 
             if(PocetKusu <= 0)
             {
-                // Error
+                throw new Exception($"Pro {NazevZbozi} nemuze byt pocet kusu roven nebo mensi nez nule.");
             }
 
             if(Cena <= 0)
             {
-                // Error
+                throw new Exception($"Pro {NazevZbozi} nemuze byt cena rovna nebo mensi nez nule.");
             }
         }
     }

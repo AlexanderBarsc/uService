@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using uService.Database;
+using uService.Services;
 
 namespace uService
 {
@@ -13,10 +14,14 @@ namespace uService
             var configuration = builder.Configuration;
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")),
+                ServiceLifetime.Scoped);
+
+
             builder.Services.AddControllers();
 
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddTransient<IOrderService, OrderService>();
 
             builder.Services.AddSwaggerGen(swagger =>
             {

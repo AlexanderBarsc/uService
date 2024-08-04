@@ -2,14 +2,18 @@
 {
     public class Objednavka
     {
-        public Objednavka(string name, IEnumerable<PolozkyObjednavky> polozkyObjednavky)
+        // Prazdny konstruktor pro EF
+        public Objednavka()
         {
+            
+        }
+        public Objednavka(string name, IEnumerable<PolozkaObjednavky> polozkyObjednavky)
+        {
+            Id = 0;
             Name = name;
             DatumVytvoreni = DateTime.Now;
             StavObjednavky = StavObjednavky.Nova;
             PolozkyObjednavky = polozkyObjednavky;
-
-
         }
 
         public int Id { get; set; }
@@ -20,6 +24,6 @@
 
         public StavObjednavky StavObjednavky { get; set; }
 
-        public IEnumerable<PolozkyObjednavky> PolozkyObjednavky { get; set; }
+        public IEnumerable<PolozkaObjednavky> PolozkyObjednavky { get; set; }
     }
 }

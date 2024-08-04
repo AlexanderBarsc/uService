@@ -9,7 +9,7 @@ namespace uService.Database
 
         public DbSet<Objednavka> Objednavky { get; set; }
 
-        public DbSet<PolozkyObjednavky> PolozkyObjednavky { get; set; }
+        public DbSet<PolozkaObjednavky> PolozkyObjednavky { get; set; }
 
     }
 }
