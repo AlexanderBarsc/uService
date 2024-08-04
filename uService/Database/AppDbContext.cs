@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using uService.Models;
 
 namespace uService.Database
@@ -10,6 +9,14 @@ namespace uService.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+            modelBuilder.Entity<Objednavka>()
+                .HasMany(p => p.PolozkyObjednavky)
+                .WithOne(p => p.Objednavka)
+                .HasForeignKey(p => p.ObjednavkaId);
+
+
             modelBuilder.Entity<PolozkaObjednavky>()
                 .HasKey(p => new { p.NazevZbozi, p.ObjednavkaId });
 

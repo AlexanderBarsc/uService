@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using uService.Database;
 using uService.Services;
@@ -13,9 +12,7 @@ namespace uService
             var builder = WebApplication.CreateBuilder(args);
             var configuration = builder.Configuration;
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")),
-                ServiceLifetime.Scoped);
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseLazyLoadingProxies().UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
 
             builder.Services.AddControllers();

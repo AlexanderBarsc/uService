@@ -1,6 +1,4 @@
-﻿using uService.Models;
-
-namespace uService.Contracts
+﻿namespace uService.Contracts
 {
     public class ObjednavkaDto
     { 

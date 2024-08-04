@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
 using uService.Contracts;
 using uService.Database;
 using uService.Models;
+using uService.ViewModels;
 
 namespace uService.Services
 {
@@ -14,19 +14,44 @@ namespace uService.Services
         {
             _dbContext = dbContext;
         }
-        public async Task UlozObjednavku(Objednavka objednavka)
+        public async Task<int> UlozObjednavku(Objednavka objednavka)
         {
 
             await _dbContext.Objednavky.AddAsync(objednavka);
 
             await _dbContext.SaveChangesAsync();
+
+            return objednavka.Id;
      
         }
 
-        public async Task VypisObjednavky(string jmenoObjednavky)
+        public async Task<IEnumerable<ObjednavkaViewModel>> VypisObjednavky()
         {
-            var list = _dbContext.Objednavky.Where(x => x.Name == jmenoObjednavky).ToList();
-            await Console.Out.WriteLineAsync();
+            var list = await _dbContext.Objednavky.ToListAsync();
+
+            var objednavky = list.Select(objednavka => new ObjednavkaViewModel(
+                objednavka.Id,
+                objednavka.Name,
+                objednavka.DatumVytvoreni,
+                objednavka.StavObjednavky,
+                objednavka.PolozkyObjednavky.Select(x => new PolozkaObjednavkyViewModel(x.NazevZbozi, x.PocetKusu, x.CenaZaKus)).ToList()));
+
+            return objednavky;
+        }
+
+        public async Task ZaplaceniObjednavky(PlatbaObjednavkyDto platbaObjednavkyDto)
+        {
+            var objednavka = await _dbContext.Objednavky.FindAsync(platbaObjednavkyDto.CisloObjednavky);
+
+            if(objednavka == null)
+            {
+                throw new Exception($"Objednavka s cislem {platbaObjednavkyDto.CisloObjednavky} nebyla nalezena.");
+            }
+
+            objednavka.StavObjednavky = platbaObjednavkyDto.BylaObjednavkaZaplacena ? StavObjednavky.Zaplacena : StavObjednavky.Zrusena;
+
+            await _dbContext.SaveChangesAsync();
+
         }
     }
 }

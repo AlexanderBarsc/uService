@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using uService.Contracts;
-using uService.Database;
 using uService.Models;
 using uService.Services;
 
@@ -8,11 +7,11 @@ namespace uService.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[Action]")]
-    public class OvladacObjednavek : ControllerBase
+    public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
 
-        public OvladacObjednavek(IOrderService orderService)
+        public OrderController(IOrderService orderService)
         {
             _orderService = orderService;
         }
@@ -23,18 +22,25 @@ namespace uService.Controllers
             var polozkyObjednavky = objednavkaDto.PolozkyObjednavky.Select(x => new PolozkaObjednavky(x.NazevZbozi, x.PocetKusu, x.CenaZaKus)).ToList();
             var objednavka = new Objednavka(objednavkaDto.Name, polozkyObjednavky);
 
-            await _orderService.UlozObjednavku(objednavka);
+            var vysledek = await _orderService.UlozObjednavku(objednavka);
+
+            return Ok($"Byla uspesne vytvorena objednavka s ID {vysledek}");
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult> ZaplaceniObjednavky(PlatbaObjednavkyDto platbaObjednavkyDto)
+        {
+            await _orderService.ZaplaceniObjednavky(platbaObjednavkyDto);
 
             return Ok();
         }
 
-
-        [HttpGet("{jmenoObjednavky}")]
-        public async Task<ActionResult> VypisObjednavky(string jmenoObjednavky)
+        [HttpGet]
+        public async Task<ActionResult> VypisObjednavky()
         {
-            await _orderService.VypisObjednavky(jmenoObjednavky);
+            var vysledek = await _orderService.VypisObjednavky();
 
-            return Ok();
+            return Ok(vysledek);
         }
     }
 }

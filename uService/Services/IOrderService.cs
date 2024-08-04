@@ -1,13 +1,15 @@
-﻿using System.Threading.Tasks;
-using uService.Contracts;
+﻿using uService.Contracts;
 using uService.Models;
+using uService.ViewModels;
 
 namespace uService.Services
 {
     public interface IOrderService
     {
-        Task UlozObjednavku(Objednavka objednavka);
+        Task<int> UlozObjednavku(Objednavka objednavka);
 
-        Task VypisObjednavky(string jmenoObjednavky);
+        Task<IEnumerable<ObjednavkaViewModel>> VypisObjednavky();
+
+        Task ZaplaceniObjednavky(PlatbaObjednavkyDto platbaObjednavkyDto);
     }
 }

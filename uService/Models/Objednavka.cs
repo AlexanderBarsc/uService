@@ -7,12 +7,14 @@
         {
             
         }
-        public Objednavka(string name, IEnumerable<PolozkaObjednavky> polozkyObjednavky)
+        public Objednavka(string name, ICollection<PolozkaObjednavky> polozkyObjednavky)
         {
             Name = name;
             DatumVytvoreni = DateTime.Now;
             StavObjednavky = StavObjednavky.Nova;
             PolozkyObjednavky = polozkyObjednavky;
+
+            Validace();
         }
 
         // O generaci ID se stará databáze
@@ -24,6 +26,14 @@
 
         public StavObjednavky StavObjednavky { get; set; }
 
-        public IEnumerable<PolozkaObjednavky> PolozkyObjednavky { get; set; }
+        public virtual ICollection<PolozkaObjednavky> PolozkyObjednavky { get; set; }
+
+        private void Validace()
+        {
+            if(string.IsNullOrWhiteSpace(Name))
+            {
+                throw new Exception("Jmeno zakaznika nebo firmy u objednavky nemuze byt prazdne!");
+            }
+        }
     }
 }
