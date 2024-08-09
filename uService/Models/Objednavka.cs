@@ -34,6 +34,11 @@
             {
                 throw new Exception("Jmeno zakaznika nebo firmy u objednavky nemuze byt prazdne!");
             }
+
+            if (PolozkyObjednavky.Count == 0)
+            {
+                throw new Exception("Objednavka musi obsahovat aspon jednu polozku!");
+            }
         }
     }
 }

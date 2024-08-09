@@ -7598,24 +7598,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alex\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\z004fn5f\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService.csproj",
+      "projectUniqueName": "C:\\Users\\z004fn5f\\OneDrive - Siemens AG\\Dokumenty\\GitHub\\uService\\uService\\uService.csproj",
       "projectName": "uService",
-      "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\uService.csproj",
-      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\uService\\uService\\obj\\",
+      "projectPath": "C:\\Users\\z004fn5f\\OneDrive - Siemens AG\\Dokumenty\\GitHub\\uService\\uService\\uService.csproj",
+      "packagesPath": "C:\\Users\\z004fn5f\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\z004fn5f\\OneDrive - Siemens AG\\Dokumenty\\GitHub\\uService\\uService\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\z004fn5f\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7623,8 +7618,9 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://mercury.tfs.siemens.net/tfs/MES_MOM/_packaging/Libraries/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -7636,6 +7632,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -7696,7 +7697,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }
